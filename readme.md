@@ -43,7 +43,7 @@ After:
 
 You can mix and match these as you like:
 
-	<div data-bind="css: [ difficulty, { completed: isCompleted }"></div>
+	<div data-bind="css: [ difficulty, { completed: isCompleted } ]"></div>
 
 
 
