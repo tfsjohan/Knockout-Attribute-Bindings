@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Knockout Attribute Bindings</title>
+	<style>
+		body 
+		{
+			font: normal 14px/18px arial;
+		}
+		
+		.slope
+		{
+			padding: 20px;
+			width: 200px;
+		}
+		
+		.slope h3, .slope p
+		{
+			margin: 0; 
+		}
+		
+		.easy 
+		{
+			background: #060;
+		}
+		
+		.medium 
+		{
+			background: #fc0;
+		}
+		
+		.hard
+		{
+			background: #000;
+			color: #fff;
+		}
+		
+	</style>
+</head>
+<body>
+
+<div>
+	<h2>Our slopes</h2>
+	<div data-bind="foreach: slopes">
+		<div class="slope" data-bind="css: difficulty">
+			<h3 data-bind="text: name"></h3>
+			<p>Difficulty: <span data-bind="text: difficulty"></span></p>
+		</div>
+	</div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://raw.github.com/SteveSanderson/knockout/master/build/output/knockout-latest.js"></script>
+<script src="../src/ko.attrbinding.js"></script>
+<script>
+	var Slope = function (name, difficulty) {
+		this.name = ko.observable(name);
+		this.difficulty = ko.observable(difficulty);
+	};
+
+	var vm = {
+		slopes: ko.observableArray([
+			new Slope("Daiper Hill", "easy"),
+			new Slope("Mediocre Mountain", "medium"),
+			new Slope("90 degrees", "hard")
+		])
+	};
+
+	ko.applyBindings(vm);
+</script>
+</body>
+</html>
